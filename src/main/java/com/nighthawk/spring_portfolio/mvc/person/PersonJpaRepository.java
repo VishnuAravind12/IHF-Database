@@ -13,7 +13,7 @@ Extends the JpaRepository interface from Spring Data JPA.
  */
 public interface PersonJpaRepository extends JpaRepository<Person, Long> {
     Person findByEmail(String email);
-
+    Person findByStuID(String stuid);
     List<Person> findAllByOrderByNameAsc();
 
     // JPA query, findBy does JPA magic with "Name", "Containing", "Or", "Email", "IgnoreCase"

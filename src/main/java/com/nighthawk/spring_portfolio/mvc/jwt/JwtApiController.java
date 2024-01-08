@@ -63,6 +63,7 @@ public class JwtApiController {
             .build();
 
         // Return HTTP response with JWT cookie
+        System.out.println(tokenCookie.toString());
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, tokenCookie.toString()).build();
     }
 
