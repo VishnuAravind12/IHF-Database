@@ -123,11 +123,24 @@ public class Person {
         try {
             Date d = new SimpleDateFormat("MM-dd-yyyy").parse("12-06-2007");
             p1.setDob(d);
+            
+        } catch (Exception e) {
+        }
+        Person p2 = new Person();
+        p2.setName("TIRTH THAKKAR");
+        p2.setEmail("ermitsactuallypronouncedwithaTHUH@gmail.com");
+        p2.setPassword("iLOVEcock");
+        p2.setFavAlbum("VETERAN");
+        p2.setStuID("29XYZABC");
+        try {
+            Date d2 = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-2024");
+            p2.setDob(d2);
+            
         } catch (Exception e) {
         }
 
         // Array definition and data initialization
-        Person persons[] = {p1};
+        Person persons[] = {p1,p2};
         return(persons);
     }
 
