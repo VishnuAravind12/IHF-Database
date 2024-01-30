@@ -62,11 +62,13 @@ public class Person {
     @NotEmpty
     private String password;
 
-    @NotEmpty
-    private String favAlbum;
+    
+    private Integer eco;
 
     @NotEmpty
-    private String stuID;
+    private String primaryCrop; 
+    
+    private Integer cash;
     // @NonNull, etc placed in params of constructor: "@NonNull @Size(min = 2, max = 30, message = "Name (2 to 30 chars)") String name"
     @NonNull
     @Size(min = 2, max = 30, message = "Name (2 to 30 chars)")
@@ -89,16 +91,16 @@ public class Person {
     */
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
-    private Map<String,Map<String, Object>> stats = new HashMap<>(); 
-    
+    private Map<String,Map<String, Object>> stats = new HashMap<>();
 
     // Constructor used when building object from an API
-    public Person(String email, String password, String name, String favAlbum, String stuID, Date dob) {
+    public Person(String email, String password, String name, Integer eco, String primaryCrop, Integer cash, Date dob) {
         this.email = email;
         this.password = password;
         this.name = name;
-        this.favAlbum = favAlbum;
-        this.stuID = stuID;
+        this.eco = eco;
+        this.primaryCrop = primaryCrop;
+        this.cash = cash;
         this.dob = dob;
     }
 
@@ -118,8 +120,9 @@ public class Person {
         p1.setName("h4seebcmd");
         p1.setEmail("mirzahbeg123@gmail.com");
         p1.setPassword("notTellingYouLOL");
-        p1.setFavAlbum("LP! (OFFLINE)");
-        p1.setStuID("19XYZABC");
+        p1.setEco(-5);
+        p1.setPrimaryCrop("corn");
+        p1.setCash(52);
         try {
             Date d = new SimpleDateFormat("MM-dd-yyyy").parse("12-06-2007");
             p1.setDob(d);
@@ -127,11 +130,12 @@ public class Person {
         } catch (Exception e) {
         }
         Person p2 = new Person();
-        p2.setName("TIRTH THAKKAR");
+        p2.setName("tirthFarmer999");
         p2.setEmail("ermitsactuallypronouncedwithaTHUH@gmail.com");
-        p2.setPassword("iLOVEcock");
-        p2.setFavAlbum("VETERAN");
-        p2.setStuID("29XYZABC");
+        p2.setPassword("iLOVEagricutlre");
+        p2.setEco(8);
+        p2.setCash(14);
+        p2.setPrimaryCrop("corn");
         try {
             Date d2 = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-2024");
             p2.setDob(d2);

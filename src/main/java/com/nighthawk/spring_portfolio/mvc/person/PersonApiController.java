@@ -71,8 +71,9 @@ public class PersonApiController {
                                              @RequestParam("password") String password,
                                              @RequestParam("name") String name,
                                              @RequestParam("dob") String dobString,
-                                             @RequestParam("favAlbum") String favAlbum,
-                                             @RequestParam("stuid") String stuid) {
+                                             @RequestParam("eco") Integer eco,
+                                             @RequestParam("primaryCrop") String primaryCrop,
+                                             @RequestParam("cash") Integer cash) {
         Date dob;
         try {
             dob = new SimpleDateFormat("MM-dd-yyyy").parse(dobString);
@@ -80,7 +81,7 @@ public class PersonApiController {
             return new ResponseEntity<>(dobString +" error; try MM-dd-yyyy", HttpStatus.BAD_REQUEST);
         }
         // A person object WITHOUT ID will create a new record with default roles as student
-        Person person = new Person(email, password, name, favAlbum, stuid, dob);
+        Person person = new Person(email, password, name, eco, primaryCrop, cash, dob);
         personDetailsService.save(person);
         return new ResponseEntity<>(email +" is created successfully", HttpStatus.CREATED);
     }
