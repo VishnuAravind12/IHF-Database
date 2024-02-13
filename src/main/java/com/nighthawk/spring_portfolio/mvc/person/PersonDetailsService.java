@@ -119,6 +119,10 @@ public class PersonDetailsService implements UserDetailsService { // "implements
         return 0;
     }
 
+    public void changeEco(String email, int eco){
+        Person player = personJpaRepository.findByEmail(email);
+        player.setEco(eco);
+    }
     /* Roles Section */
 
     public void saveRole(PersonRole role) {

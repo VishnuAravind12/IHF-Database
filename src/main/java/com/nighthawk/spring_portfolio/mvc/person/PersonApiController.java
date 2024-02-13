@@ -141,4 +141,13 @@ public class PersonApiController {
         people.sort(Comparator.comparingInt(Person::getEco).reversed());
         return new ResponseEntity<>(people, HttpStatus.OK);
     }
+
+    @PostMapping("/ecoUpdate")
+    public ResponseEntity<Object> postEco(@RequestBody Map<String, Object> requestBody) {
+        String email = (String) requestBody.get("email");
+        Integer eco = (Integer) requestBody.get("eco");
+
+        personDetailsService.changeEco(email, eco);
+        return new ResponseEntity<>(email + " is updated successfully", HttpStatus.CREATED);
+    }
 }
