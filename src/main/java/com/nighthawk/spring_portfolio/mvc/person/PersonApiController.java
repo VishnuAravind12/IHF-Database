@@ -60,23 +60,27 @@ public class PersonApiController {
      * POST Aa record by Requesting Parameters from URI
      */
     @PostMapping("/post")
-    public ResponseEntity<Object> postPerson(@RequestParam("email") String email,
-            @RequestParam("password") String password,
-            @RequestParam("name") String name,
-            @RequestParam("dob") String dobString,
-            @RequestParam("eco") Integer eco,
-            @RequestParam("primaryCrop") String primaryCrop,
-            @RequestParam("cash") Integer cash) {
+    public ResponseEntity<Object> postPerson(@RequestBody Map<String, Object> requestBody) {
+        String email = (String) requestBody.get("email");
+        String password = (String) requestBody.get("password");
+        String name = (String) requestBody.get("name");
+        String dobString = (String) requestBody.get("dob");
+        Integer eco = (Integer) requestBody.get("eco");
+        String primaryCrop = (String) requestBody.get("primaryCrop");
+        Integer cash = (Integer) requestBody.get("cash");
+
         Date dob;
         try {
             dob = new SimpleDateFormat("MM-dd-yyyy").parse(dobString);
         } catch (Exception e) {
             return new ResponseEntity<>(dobString + " error; try MM-dd-yyyy", HttpStatus.BAD_REQUEST);
         }
+
         // A person object WITHOUT ID will create a new record with default roles as
         // student
         Person person = new Person(email, password, name, eco, primaryCrop, cash, dob);
         personDetailsService.save(person);
+
         return new ResponseEntity<>(email + " is created successfully", HttpStatus.CREATED);
     }
 
