@@ -142,6 +142,14 @@ public class PersonApiController {
         return new ResponseEntity<>(people, HttpStatus.OK);
     }
 
+    @PostMapping("/getEco")
+    public ResponseEntity<Object> getEco(@RequestBody Map<String, Object> requestBody) {
+        String email = (String) requestBody.get("email");
+        Person player = personDetailsService.getByEmail(email);
+        int eco = (player != null) ? player.getEco() : 0;
+        return new ResponseEntity<>(eco, HttpStatus.OK);
+    }
+
     @PostMapping("/ecoUpdate")
     public ResponseEntity<Object> postEco(@RequestBody Map<String, Object> requestBody) {
         String email = (String) requestBody.get("email");
