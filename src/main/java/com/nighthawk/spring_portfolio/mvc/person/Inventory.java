@@ -6,15 +6,17 @@ import java.util.List;
 public class Inventory {
     private List<Crops> cropsList;
     private List<SoilAdditives> soilAdditivesList;
+    private int farmArea;
     // Similar to FRQ 3 we have an array list that a player holds in their inventory
     // this also allows us for us to add and change elements as they
     // go through out the game ensuring more flexibility, we are also looping
     // through the various elements and being able to get a more
     // in-depth amount of player stats
 
-    public Inventory() {
+    public Inventory(int farmArea) {
         cropsList = new ArrayList<>();
         soilAdditivesList = new ArrayList<>();
+        this.farmArea = farmArea;
     }
 
     public void addCrop(Crops crop) {
@@ -68,7 +70,7 @@ public class Inventory {
     public int getCost() {
         int totalCost = 0;
         for (SoilAdditives soilAdditive : soilAdditivesList) {
-            totalCost += soilAdditive.cost();
+            totalCost += soilAdditive.cost(farmArea);
         }
         return totalCost;
     }
@@ -76,7 +78,7 @@ public class Inventory {
     public int getEcoEffect() {
         int totalEcoEffect = 0;
         for (SoilAdditives soilAdditive : soilAdditivesList) {
-            totalEcoEffect += soilAdditive.ecoEffect();
+            totalEcoEffect += soilAdditive.ecoEffect(farmArea);
         }
         return totalEcoEffect;
     }
@@ -84,7 +86,7 @@ public class Inventory {
     public int getGrowthEffect() {
         int totalGrowthEffect = 0;
         for (SoilAdditives soilAdditive : soilAdditivesList) {
-            totalGrowthEffect += soilAdditive.growthEffect();
+            totalGrowthEffect += soilAdditive.growthEffect(farmArea);
         }
         return totalGrowthEffect;
     }
@@ -92,7 +94,7 @@ public class Inventory {
     public int getProfitEffect() {
         int totalProfitEffect = 0;
         for (SoilAdditives soilAdditive : soilAdditivesList) {
-            totalProfitEffect += soilAdditive.profitEffect();
+            totalProfitEffect += soilAdditive.profitEffect(farmArea);
         }
         return totalProfitEffect;
     }
