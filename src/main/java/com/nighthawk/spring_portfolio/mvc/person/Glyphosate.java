@@ -8,12 +8,10 @@ public class Glyphosate implements SoilAdditives {
     int ecoEffect = -10;
     int growthEffect = 10;
     int profitEffect = 2;
+    int area;
 
-    public Glyphosate() {
-        this.cost = cost;
-        this.ecoEffect = ecoEffect;
-        this.growthEffect = growthEffect;
-        this.profitEffect = profitEffect;
+    public Glyphosate(int area) {
+        this.area = area;
     }
 
     @Override
