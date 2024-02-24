@@ -2,10 +2,10 @@ package com.nighthawk.spring_portfolio.mvc.person;
 
 public class Glyphosate implements SoilAdditives {
 
-    int cost = 100;
+    int cost = (int) (Math.random() * 13) + 1;
     int ecoEffect = -10;
     int growthEffect = 10;
-    int profitEffect = -10;
+    int profitEffect = 2;
 
     public Glyphosate() {
         this.cost = cost;
@@ -16,21 +16,33 @@ public class Glyphosate implements SoilAdditives {
 
     @Override
     public int cost(int area) {
-        return 0;
+        int quantity = area;
+        int unitCost = this.cost;
+        int totalCost = unitCost * quantity;
+        return totalCost;
     }
 
     @Override
     public int ecoEffect(int area) {
-        return 0;
+        int quantity = area;
+        int unitEcoEffect = this.ecoEffect;
+        int totalEcoEffect = unitEcoEffect * quantity;
+        return totalEcoEffect;
     }
 
     @Override
     public int growthEffect(int area) {
-        return 0;
+        int quantity = area;
+        int unitGrowthEffect = this.growthEffect;
+        int totalGrowthEffect = unitGrowthEffect * quantity;
+        return totalGrowthEffect;
     }
 
     @Override
     public int profitEffect(int area) {
-        return 0;
+        int quantity = area;
+        int unitProfitEffect = this.profitEffect;
+        int totalProfitEffect = unitProfitEffect * quantity;
+        return totalProfitEffect;
     }
 }
