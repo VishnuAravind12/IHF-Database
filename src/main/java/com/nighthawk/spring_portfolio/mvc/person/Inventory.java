@@ -38,7 +38,7 @@ public class Inventory {
     public int getEconValue() {
         int totalEconValue = 0;
         for (Crops crop : cropsList) {
-            totalEconValue += crop.econValue();
+            totalEconValue += crop.econValue(farmArea);
         }
         return totalEconValue;
     }
@@ -54,7 +54,7 @@ public class Inventory {
     public int getProfitValue() {
         int totalProfitValue = 0;
         for (Crops crop : cropsList) {
-            totalProfitValue += crop.profitValue();
+            totalProfitValue += crop.profitValue(farmArea);
         }
         return totalProfitValue;
     }
@@ -62,7 +62,7 @@ public class Inventory {
     public int getWaterUsage() {
         int totalWaterUsage = 0;
         for (Crops crop : cropsList) {
-            totalWaterUsage += crop.waterUsage();
+            totalWaterUsage += crop.waterUsage(farmArea);
         }
         return totalWaterUsage;
     }

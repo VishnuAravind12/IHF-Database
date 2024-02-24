@@ -1,5 +1,6 @@
 package com.nighthawk.spring_portfolio.mvc.person;
 
+// Uses the interface SoilAdditives element to implement the Glyphosate class like question 4
 public class Glyphosate implements SoilAdditives {
 
     int cost = (int) (Math.random() * 13) + 1; // Glphosate cost's between 1 and 13 dollars per acre so we pick a random

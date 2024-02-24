@@ -1,12 +1,13 @@
 package com.nighthawk.spring_portfolio.mvc.person;
 
 public interface Crops {
-    int econValue();
+    int econValue(int area);
 
     int growthStage();
 
-    int profitValue();
+    int calculateGrowingSeason();
 
-    int waterUsage();
+    int profitValue(int area);
+
+    int waterUsage(int area);
 }
-
