@@ -24,11 +24,17 @@ public class Corn implements Crops {
 
     @Override
     public int profitValue() {
-        return 0;
+        int waterCost = 10; // 10 dollars allows for 1000 gallons of water
+        int totalWaterCost = 10 * waterNeeded;
+        int baseCropProfit = 6134; 
+        int totalProfit = baseCropProfit - totalWaterCost;
+        return totalProfit; // 134 dollars profit
     }
 
     @Override
     public int waterUsage() {
-        return 0;
+        // 1 unit = 1000 gallons of water
+        int waterNeeded = 600;
+        return waterNeeded;
     }
 }
