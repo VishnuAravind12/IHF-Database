@@ -2,7 +2,8 @@ package com.nighthawk.spring_portfolio.mvc.person;
 
 public class Glyphosate implements SoilAdditives {
 
-    int cost = (int) (Math.random() * 13) + 1;
+    int cost = (int) (Math.random() * 13) + 1; // Glphosate cost's between 1 and 13 dollars per acre so we pick a random
+                                               // number in this range to get the cost
     int ecoEffect = -10;
     int growthEffect = 10;
     int profitEffect = 2;
