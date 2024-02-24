@@ -16,6 +16,9 @@ public class Corn implements Crops {
     @Override
     public int econValue() {
         return 1;
+        // Could implement a matrix that stores the various elements such as growth
+        // stages, amount pesticide use, growing season, etc. to perform economic value
+        // calculation. This would most likely be an econValue method of the Crop class.
     }
 
     @Override
