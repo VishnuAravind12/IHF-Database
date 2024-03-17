@@ -158,4 +158,21 @@ public class PersonApiController {
         personDetailsService.changeEco(email, eco);
         return new ResponseEntity<>(email + " is updated successfully", HttpStatus.CREATED);
     }
+
+    @PostMapping("/getCash")
+    public ResponseEntity<Object> getCash(@RequestBody Map<String, Object> requestBody) {
+        String email = (String) requestBody.get("email");
+        Person player = personDetailsService.getByEmail(email);
+        int cash = (player != null) ? player.getCash() : 0;
+        return new ResponseEntity<>(cash, HttpStatus.OK);
+    }
+
+    @PostMapping("/cashUpdate")
+    public ResponseEntity<Object> postCash(@RequestBody Map<String, Object> requestBody) {
+        String email = (String) requestBody.get("email");
+        Integer cash = (Integer) requestBody.get("cash");
+
+        personDetailsService.changeCash(email, cash);
+        return new ResponseEntity<>(email + " is updated successfully", HttpStatus.CREATED);
+    }
 }
