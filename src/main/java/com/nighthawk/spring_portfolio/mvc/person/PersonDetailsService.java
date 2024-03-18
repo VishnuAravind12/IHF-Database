@@ -119,8 +119,29 @@ public class PersonDetailsService implements UserDetailsService { // "implements
         return 0;
     }
 
-    /* Roles Section */
+    public void changeEco(String email, int eco) {
+        Person player = personJpaRepository.findByEmail(email);
+        int currentEco = player.getEco();
+        int newEco = currentEco + eco;
+        player.setEco(newEco);
+    }
 
+    public int getCash(long id) {
+        Person person = get(id);
+        if (person != null) {
+            return person.getCash();
+        }
+        return 0;
+    }
+
+    public void changeCash(String email, int cash) {
+        Person player = personJpaRepository.findByEmail(email);
+        int currentCash = player.getCash();
+        int newCash = currentCash + cash;
+        player.setCash(newCash);
+    }
+
+    /* Roles Section */
     public void saveRole(PersonRole role) {
         PersonRole roleObj = personRoleJpaRepository.findByName(role.getName());
         if (roleObj == null) { // only add if it is not found

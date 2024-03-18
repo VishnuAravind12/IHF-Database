@@ -60,23 +60,27 @@ public class PersonApiController {
      * POST Aa record by Requesting Parameters from URI
      */
     @PostMapping("/post")
-    public ResponseEntity<Object> postPerson(@RequestParam("email") String email,
-            @RequestParam("password") String password,
-            @RequestParam("name") String name,
-            @RequestParam("dob") String dobString,
-            @RequestParam("eco") Integer eco,
-            @RequestParam("primaryCrop") String primaryCrop,
-            @RequestParam("cash") Integer cash) {
+    public ResponseEntity<Object> postPerson(@RequestBody Map<String, Object> requestBody) {
+        String email = (String) requestBody.get("email");
+        String password = (String) requestBody.get("password");
+        String name = (String) requestBody.get("name");
+        String dobString = (String) requestBody.get("dob");
+        Integer eco = (Integer) requestBody.get("eco");
+        String primaryCrop = (String) requestBody.get("primaryCrop");
+        Integer cash = (Integer) requestBody.get("cash");
+
         Date dob;
         try {
             dob = new SimpleDateFormat("MM-dd-yyyy").parse(dobString);
         } catch (Exception e) {
             return new ResponseEntity<>(dobString + " error; try MM-dd-yyyy", HttpStatus.BAD_REQUEST);
         }
+
         // A person object WITHOUT ID will create a new record with default roles as
         // student
         Person person = new Person(email, password, name, eco, primaryCrop, cash, dob);
         personDetailsService.save(person);
+
         return new ResponseEntity<>(email + " is created successfully", HttpStatus.CREATED);
     }
 
@@ -136,5 +140,39 @@ public class PersonApiController {
         List<Person> people = repository.findAll();
         people.sort(Comparator.comparingInt(Person::getEco).reversed());
         return new ResponseEntity<>(people, HttpStatus.OK);
+    }
+
+    @PostMapping("/getEco")
+    public ResponseEntity<Object> getEco(@RequestBody Map<String, Object> requestBody) {
+        String email = (String) requestBody.get("email");
+        Person player = personDetailsService.getByEmail(email);
+        int eco = (player != null) ? player.getEco() : 0;
+        return new ResponseEntity<>(eco, HttpStatus.OK);
+    }
+
+    @PostMapping("/ecoUpdate")
+    public ResponseEntity<Object> postEco(@RequestBody Map<String, Object> requestBody) {
+        String email = (String) requestBody.get("email");
+        Integer eco = (Integer) requestBody.get("eco");
+
+        personDetailsService.changeEco(email, eco);
+        return new ResponseEntity<>(email + " is updated successfully", HttpStatus.CREATED);
+    }
+
+    @PostMapping("/getCash")
+    public ResponseEntity<Object> getCash(@RequestBody Map<String, Object> requestBody) {
+        String email = (String) requestBody.get("email");
+        Person player = personDetailsService.getByEmail(email);
+        int cash = (player != null) ? player.getCash() : 0;
+        return new ResponseEntity<>(cash, HttpStatus.OK);
+    }
+
+    @PostMapping("/cashUpdate")
+    public ResponseEntity<Object> postCash(@RequestBody Map<String, Object> requestBody) {
+        String email = (String) requestBody.get("email");
+        Integer cash = (Integer) requestBody.get("cash");
+
+        personDetailsService.changeCash(email, cash);
+        return new ResponseEntity<>(email + " is updated successfully", HttpStatus.CREATED);
     }
 }
