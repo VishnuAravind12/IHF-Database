@@ -69,7 +69,7 @@ public class SecurityConfig {
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers("/authenticate").permitAll()
 						.requestMatchers("/mvc/person/update/**", "/mvc/person/delete/**").authenticated()
-						.requestMatchers("/api/person/ecoUpdate/**", "/api/person/delete/**").authenticated()
+						.requestMatchers("/api/person/delete/**").authenticated()
 						.requestMatchers("/**").permitAll())
 				// support cors
 				.cors(Customizer.withDefaults())
