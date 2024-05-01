@@ -1,7 +1,7 @@
 version: '3'
 services:
   web:
-    image: IHF_database
+    image: ihf_database
     build: .
     ports:
       - "6666:6666"
