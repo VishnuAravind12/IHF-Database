@@ -1,32 +1,62 @@
-## Recent Changes
-[Upgrading old dependencies to newest versions.](https://github.com/nighthawkcoders/spring_portfolio/issues/12)
+# Iowa Hawkeyes Farming Database (IHF-Database)
 
-# [Spring Portfolio Starter](https://nighthawkcodingsociety.com/projectsearch/details/Spring%20Portfolio%20Starter)
+## Overview
+The Iowa Hawkeyes Farming Database is a full-stack application that merges the interests of farmers and basketball enthusiasts. Developed by a team of twelve developers over two trimesters (2023 - 2024), the project features a variety of functionalities including a statistical simulation for predicting NBA player performance and a farming simulator game with an integrated marketplace for harvested crops.
 
-- Runtime link: https://spring.nighthawkcodingsociety.com/
-- JWT Login: https://nighthawkcoders.github.io/APCSA/data/login
-- Jokes endpoint: https://spring.nighthawkcodingsociety.com/api/jokes/
+## Features
 
+### Monte Carlo Simulation
+- **Statistical Simulation**: Implemented a Monte Carlo simulation using historical data to predict future game statistics for NBA players.
+- **Prediction Models**: Developed linear and logistic regression models to analyze and predict individual NBA player statistics.
 
+### Farming Simulator Game
+- **Gameplay**: Engaging farming simulator where users can manage their virtual farms, plant crops, and harvest them.
+- **Marketplace**: Integrated marketplace allowing users to trade harvested crops with other players.
 
-## Visual thoughts
+## Technologies Used
+- **Backend**: Java, Spring Boot
+- **Frontend**: HTML, CSS, JavaScript
+- **Database**: MySQL
+- **Containerization**: Docker, Docker Compose
 
-- Starter code should be fun and practical
-- Organize with Bootstrap menu 
-- Add some color and fun through VANTA Visuals (birds, halo, solar, net)
-- Show some practical and fun links (hrefs) like Twitter, Git, Youtube
-- Show student project specific links (hrefs) per page
-- Show student About me pages
+## Getting Started
+### Prerequisites
+- Java JDK 17 (adoptopenjdk:17)
+- Docker
 
-## Getting started
+### Installation
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/Del-Norte-Farmers-Iowa-Hawkeyes-Fanclub/IHF-Database.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd IHF-Database
+    ```
+3. Build the project using Maven:
+    ```bash
+    ./mvnw clean install
+    ```
+4. Run the application:
+    ```bash
+    ./mvnw spring-boot:run
+    ```
 
-- Clone project and open in VSCode
-- Verify Project Structure to use a good Java JDK (adoptopenjdk:17)
-- Play or entry point is Main.java, look for Run option in code.  This eanbles Spring to load
-- Java source (src/main/java/...) has Java files.  Find "controllers" path, these files enable HTTP route and HTML file relationship.
-- HTML source (src/main/resources/...) had templates and supporting files.  Find index.html as this file is launched by defaul in Spring.  Other HTML files are loaded by building an "@Controller"
+### Docker Deployment
+1. Build the Docker image:
+    ```bash
+    docker build -t ihf-database .
+    ```
+2. Run the Docker container:
+    ```bash
+    docker-compose up
+    ```
 
-## IDE management
-
-- A ".gitignore" can teach a Developer a lot about Java runtime.  A target directory is created when you press play button, byte code is generated and files are moved into this location.
-- "pom.xml" file can teach you a lot about Java dependencies.  This is similar to "requirements.txt" file in Python.  It manages packages and dependencies.
+## Project Structure
+- **`src/main/java/`**: Contains the Java source files
+    - **`controllers/`**: HTTP route and HTML file relationships
+- **`src/main/resources/`**: Contains HTML templates and supporting files
+    - **`templates/`**: HTML templates
+    - **`static/`**: Static resources (CSS, JS, images)
+- **`Dockerfile`**: Docker configuration for containerizing the application
+- **`docker-compose.yml`**: Docker Compose configuration for multi-container applications
